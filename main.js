@@ -8,20 +8,9 @@ requirejs.config({
       'backbone':       'lib/backbone',
       'mocha':          'lib/mocha',
       'chai':           'lib/chai',
-      'src': 		  			'src/test1'
-      // 'sinon-chai':     'libs/chai/sinon-chai',
-      // 'sinon':          'libs/sinon/lib/sinon',
-      // 'sinon-assert':   'libs/sinon/lib/assert',
-      // 'sinon-spy':      'libs/sinon/lib/spy',
-      // 'sinon-behavior': 'libs/sinon/lib/behavior',
-      // 'sinon-call':     'libs/sinon/lib/call',
-      // 'sinon-collection': 'libs/sinon/lib/collection',
-      // 'sinon-match':    'libs/sinon/lib/match',
-      // 'sinon-mock':     'libs/sinon/lib/mock',
-      // 'sinon-test':     'libs/sinon/lib/test',
-      // 'sinon-sandbox':  'libs/sinon/lib/sandbox',
-      // 'sinon-stub':     'libs/sinon/lib/stub',
-      // 'sinon-testcase': 'libs/sinon/lib/test_case'
+      'src': 		  			'src/test1',
+      'sinon_chai':     'lib/sinon-chai',
+      'sinon':          'lib/sinon'
   },
   // configuring exports, dependencies ('deps:') of the above etc.
   // shims make the above AMD compliant
@@ -41,14 +30,29 @@ requirejs.config({
   	},
     'chai': {
     		exports: 'chai'
-    }
+    },
+    'sinon_chai': {
+      exports: 'sinon_chai'
+    },
+    'sinon': {
+      exports: 'sinon'
+    },
 	},
 	waitSeconds: 15
 });
 
 // require call takes an array of modules as the first arg
 // and a function as the second arg, with the variables exported from the shims passed as its params
-require(['jquery', 'underscore', 'backbone', 'mocha', 'chai'], function($, _, backbone, mocha, chai) {
+require([
+  'jquery',
+  'underscore',
+  'backbone',
+  'mocha',
+  'chai',
+  'sinon_chai',
+  'sinon'
+  ],
+  function($, _, backbone, mocha, chai, sinon_chai, sinon) {
 	// setting global variables for the app
   chai = require('chai'),
 	expect = chai.expect,
